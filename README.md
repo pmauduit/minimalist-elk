@@ -12,3 +12,6 @@ A minimalist ELK docker composition.
 oc logs -f pod-identifier | nc localhost 9000
 ```
 
+# Then
+
+Configure Kibana by browsing it: http://localhost:5601/
