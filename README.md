@@ -15,3 +15,10 @@ oc logs -f pod-identifier | nc localhost 9000
 # Then
 
 Configure Kibana by browsing it: http://localhost:5601/
+
+# Querying ES directly
+
+```
+curl -XPOST "http://localhost:9200/_search" -d '{ "query": { "match_all" :{} } }' -H'Content-Type: application/json'
+```
+
