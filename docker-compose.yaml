@@ -1,7 +1,7 @@
 version: '3'
 services:
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
     ports:
       - 9200:9200
       - 9300:9300
@@ -9,16 +9,18 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.0
+    image: docker.elastic.co/kibana/kibana:7.10.0
     ports:
       - 5601:5601
     environment:
       ELASTICSEARCH_URL: http://elastic:9200
       ELASTICSEARCH_HOSTS: http://elastic:9200
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.9.0
+    image: docker.elastic.co/logstash/logstash:7.10.0
     ports:
       - 9000:9000
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    depends_on:
+      - elastic
 
